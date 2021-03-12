@@ -4,8 +4,10 @@ An Application for Me *Title in process*
 
 # Description
 This app is based on my needs and a combination of my most visited sites and features that i would want in an app. The primary idea is to make an application that i would actually want and use on a daily basis.
+The app will feature several features and functions learned other course AND1.
 
-List of User Features: (Probably will change)
+List of User Features: (Could possibly change as project goes along)
+- 
 - An actual Dark Mode
 - A live look at Luka Doncic's stats, and how he performed in his latest match
 - The Premier League table
