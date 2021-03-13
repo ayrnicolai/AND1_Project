@@ -1,18 +1,28 @@
 
 # Name
-An Application for Me *Title in process*
+An Application for booking clothes consultation and buying clothes  *Title in process*
 
 # Description
-This app is based on my needs and a combination of my most visited sites and features that i would want in an app. The primary idea is to make an application that i would actually want and use on a daily basis.
-The app will feature several features and functions learned other course AND1.
+This app is for a made up company, which will have a booking system, where a users can book a personal
+consultation wiht a salesperson. Also shop and buy clothes and whatever a clothing app involves.
+This is a very boring choice, but i am also very boring.
 
-List of User Features: (Could possibly change as project goes along)
-- 
-- An actual Dark Mode
-- A live look at Luka Doncic's stats, and how he performed in his latest match
-- The Premier League table
-- Manchester City's Player Ratings from latest match
-- A comparisons of local stores energy drink prices, which will be updated
-- Tracker of how much money i have used on (unnecessary) food
-- Scheduling Application Fx. (When did i last clean)
-- 
+# MoSCoW
+
+Must have:
+- Booking system
+- Buy clothing items
+- Login system
+- Database systen
+
+Should have:
+- Annoying Notifications
+- Search fucntions
+- Slick Design
+- Categories
+
+Could have intiatives:
+- Color schemes
+
+Will not have:
+- Security
