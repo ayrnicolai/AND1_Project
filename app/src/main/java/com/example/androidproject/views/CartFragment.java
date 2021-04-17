@@ -7,6 +7,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.DividerItemDecoration;
 
@@ -25,6 +27,7 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
 
     ShopViewModel shopViewModel;
     FragmentCartBinding fragmentCartBinding;
+    NavController navController;
 
     public CartFragment() {
         // Required empty public constructor
@@ -42,6 +45,8 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        navController = Navigation.findNavController(view);
+
         CartListAdapter cartListAdapter = new CartListAdapter(this);
         fragmentCartBinding.cartRecyclerView.setAdapter(cartListAdapter);
         fragmentCartBinding.cartRecyclerView.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL));
@@ -51,15 +56,37 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
             @Override
             public void onChanged(List<CartItem> cartItems) {
                 cartListAdapter.submitList(cartItems);
+                fragmentCartBinding.placeOrderButton.setEnabled(cartItems.size() > 0);  //enables button if there items in cart
 
             }
         });
+
+        shopViewModel.getTotalPrice().observe(getViewLifecycleOwner(), new Observer<Double>() {
+            @Override
+            public void onChanged(Double aDouble) {
+                fragmentCartBinding.orderTotalTextView.setText("Total: Smeckels " + aDouble.toString()); //Vi kan gøre det fordi vi bruger viewbinding og ikke databinding
+
+            }
+        });
+    fragmentCartBinding.placeOrderButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            navController.navigate(R.id.action_cartFragment_to_orderFragment);
+        }
+    });
+
     }
 
 
     @Override
     public void deleteItem(CartItem cartItem) {
         shopViewModel.removeItemFromCart(cartItem);
+
+    }
+
+    @Override
+    public void changeQuantity(CartItem cartItem, int quantity) {
+        shopViewModel.changeQuantity(cartItem, quantity);
 
     }
 }
