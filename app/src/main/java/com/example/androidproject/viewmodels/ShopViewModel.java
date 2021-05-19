@@ -7,11 +7,15 @@ import androidx.lifecycle.ViewModel;
 import com.example.androidproject.models.CartItem;
 import com.example.androidproject.models.Product;
 import com.example.androidproject.repositories.CartRepo;
+import com.example.androidproject.repositories.DatesLiveData;
+import com.example.androidproject.repositories.DatesRepo;
 import com.example.androidproject.repositories.ShopRepo;
 
 import java.util.List;
 
 public class ShopViewModel extends ViewModel {
+
+    DatesRepo datesRepo = new DatesRepo();
 
     ShopRepo shopRepo = new ShopRepo();
 
@@ -27,6 +31,11 @@ public class ShopViewModel extends ViewModel {
         return shopRepo.getProducts();
 
     }
+    public DatesLiveData getDate() {
+        return datesRepo.getWeekdays();
+    }
+
+
 
     public void setProduct(Product product) {
         mutableProduct.setValue(product);

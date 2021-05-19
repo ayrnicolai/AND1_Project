@@ -6,12 +6,17 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.androidproject.models.Product;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 public class ShopRepo {
+
+    CollectionReference allRoomRef;
+
     private MutableLiveData<List<Product>> mutableProductList;
 
     public LiveData<List<Product>> getProducts() {
@@ -21,6 +26,12 @@ public class ShopRepo {
         }
         return mutableProductList;
     }
+  /*  private void loadProducts2() {
+
+        allRoomRef = FirebaseFirestore.getInstance().collection("BookingSystem");
+        mutableProductList.setValue((List<Product>) allRoomRef);
+
+    }*/
 
     private void loadProducts() {
         List<Product> productList = new ArrayList<>();
